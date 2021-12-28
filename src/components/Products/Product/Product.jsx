@@ -16,7 +16,8 @@ const Product = ({ cart, product, onAddToCart, onSetProductId, isTyping, onSetIs
 
     return (
         <>
-            <Card className={classes.root} onClick={() => onSetProductId(product.id)}>
+            <Card className={product.id === 'prod_AYrQlWXKVawnbR' || product.id === 'prod_yA6nldmQJMwEWb' || product.id === 'prod_A12JwrekE8lPjn' || product.id === 'prod_7ZAMo1QRWWoNJ4' || product.id === 'prod_r2LM5QGjEPwZV1' || product.id === 'prod_NXELwj182pl3A4' ? classes.firstRoot : classes.root} onClick={() => onSetProductId(product.id)}>
+            {console.log(product.id)}
             <CardMedia className={classes.media} image={product.media.source} title={product.name} />
             <CardContent>
                 <div className={classes.cardContent}>

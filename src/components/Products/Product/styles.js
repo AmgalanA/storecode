@@ -3,10 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles((theme) => ({
     root: {
         cursor: 'pointer',
-        marginTop:'80px',
+        marginTop:'40px',
+        margin: '10px',
         [theme.breakpoints.down('sm')]: {
-          marginTop:'100px',
+          marginTop:'20px',
         }
+      },
+      firstRoot: {
+        marginTop: '140px',
+        margin: '10px',
+        cursor: 'pointer',
       },
     media: {
         height: 0,

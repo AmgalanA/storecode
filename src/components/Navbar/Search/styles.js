@@ -13,6 +13,9 @@ export default makeStyles((theme) => ({
         borderRadius:'4px',
         flexGrow:'1',
         background:'rgba(221,143,46)',
+        [theme.breakpoints.down('md')]: {
+            marginLeft: '-10px',
+        }
     },
     mainPageTitle: {
         textAlign:'center',
@@ -45,20 +48,18 @@ export default makeStyles((theme) => ({
     bookOptionsContainer: {
         background:'white',
         position:'fixed',
+        top:'200px',
         flexGrow:'1',
-        marginTop:'170px',
         borderRadius:'10px',
         padding:'5px 10px',
         border:'3px solid black',
-        opacity:'0.9',
-        [theme.breakpoints.down('xs')]: {
-            marginTop:'220px',
-        },
+        opacity:'0.85',
     },
     availableProductName: {
         padding:'10px 0',
         borderBottom:'1px solid black',
         cursor:'pointer',
+        marginTop: '0',
         [theme.breakpoints.down('sm')]: {
             fontSize:'0.9em',
         }

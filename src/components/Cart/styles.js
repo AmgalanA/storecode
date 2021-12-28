@@ -12,7 +12,9 @@ export default makeStyles((theme) => ({
     },
   },
   emptyButton: {
-    minWidth: '150px',
+    maxWidth: 'fit-content',
+    fontSize: '19px',
+    marginBottom: '10px',
     [theme.breakpoints.down('xs')]: {
       marginBottom: '5px',
     },
@@ -21,7 +23,8 @@ export default makeStyles((theme) => ({
     },
   },
   checkoutButton: {
-    minWidth: '150px',
+    fontSize: '19px',
+    minWidth: 'fit-content',
   },
   link: {
     textDecoration: 'none',

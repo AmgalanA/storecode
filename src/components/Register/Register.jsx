@@ -5,7 +5,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import { useDispatch } from 'react-redux';
 import { login, selectUser } from '../../features/userSlice';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signInWithRedirect, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signInWithRedirect, signInWithPopup, getRedirectResult } from "firebase/auth";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { provider, auth } from '../../firebase';
@@ -69,17 +69,33 @@ const Register = ({ setIsShowingProduct }) => {
         });
     }
 
-    const signInWithGoogle = () => {
-        signInWithPopup(auth, provider)
-        .then((result) => {
+    const signInWithGoogle = async () => {
+        // signInWithPopup(auth, provider)
+        // .then((result) => {
+        //     dispatch(login({
+        //         email: result.user.email,
+        //         uid: result.user.uid,
+        //         displayName: result.user.displayName,
+        //         profilePic: result.user.photoURL,
+        //     }));
+        // })
+        // .catch(error => console.log(error));
+        
+        await signInWithPopup(auth, provider)
+        .then(userAuth => {
             dispatch(login({
-                email: result.user.email,
-                uid: result.user.uid,
-                displayName: result.user.displayName,
-                profilePic: result.user.photoURL,
-            }));
+                email: userAuth.user.email,
+                uid: userAuth.user.uid,
+                displayName: userAuth.user.displayName,
+                profilePic: userAuth.user.photoURL,
+            }))
         })
-        .catch(error => console.log(error));
+        .then(() => {
+           setIsShowingProduct(true); 
+        })
+        .catch(error => {
+            alert(error);
+        });
     }
 
     if(user) setIsShowingProduct(true);

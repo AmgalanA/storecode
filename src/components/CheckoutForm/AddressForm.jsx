@@ -152,9 +152,9 @@ const AddressForm = ({ checkoutToken, next, nextStep, timeout }) => {
                         </Grid> */}
                     </Grid>
                     <br />
-                    <div style={{ display:'flex', justifyContent: 'space-between', marginTop:'10px' }}>
-                        <Button component={Link} to="/cart" variant="outlined">Назад к корзине</Button>
-                        <Button type="submit" color="primary" variant="contained">Оформить заказ</Button>
+                    <div style={{ display:'flex' , justifyContent: 'space-between', marginTop:'10px' }}>
+                        <Button component={Link} style={{margin: '10px'}} to="/cart" variant="outlined">Назад к корзине</Button>
+                        <Button type="submit" style={{margin: '10px'}} color="primary" variant="contained">Оформить заказ</Button>
                     </div>
                 </form>
             </FormProvider>

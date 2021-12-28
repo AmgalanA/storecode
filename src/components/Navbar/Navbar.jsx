@@ -76,7 +76,6 @@ const Navbar = ({ totalItems, products, onSetQuery, setIsShowingProduct, onHandl
                                     </IconButton>
                                 </div>
                                 </Toolbar>
-                                
                             )}
                     </Toolbar>
                     </>

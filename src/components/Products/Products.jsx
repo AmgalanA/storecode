@@ -14,7 +14,10 @@ const Products = ({ onSetProductId, cart, products, onAddToCart, query, isTyping
         <main className={classes.content} >
             <div className={classes.toolbar} />
             <Grid 
-            className={classes.mainGrid} container justify="center" spacing={4}>
+                className={classes.mainGrid} 
+                container 
+                justify="center" 
+            >
                 {products.filter((product) => { 
                     if (query === "") {
                         return product;

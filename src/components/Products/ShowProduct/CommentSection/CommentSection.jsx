@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import useStyles from './styles';
 import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -21,6 +21,8 @@ const CommentSection = ({ setIsShowingProduct, productId }) => {
 
     const dispatch = useDispatch();
 
+    const endOfCommentsRef = useRef(null);
+
     useEffect( async () => {
         try {
             const querySnapshot = await 
@@ -35,7 +37,14 @@ const CommentSection = ({ setIsShowingProduct, productId }) => {
         } catch(error) {
             if(error.message === 'Quota exceeded.') setIsError(true);
         }
-    },[comments])
+    },[comments]);
+
+    const scrollToBottom = () => {
+        endOfCommentsRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    };
 
     const sendComment = async (e) => {
         if(commentText !== '') {
@@ -46,16 +55,18 @@ const CommentSection = ({ setIsShowingProduct, productId }) => {
                 message: commentText,
                 photoUrl: user.photoUrl || '',
                 timestamp: serverTimestamp(),
-            })
+            });
 
             setCommentText('');
-        }
-    }
+            scrollToBottom();
+        };
+        return;
+    };
 
     const handleLogout = () => {
         dispatch(logout());
         signOut(auth);
-    }
+    };
         
         return (
             <div className={classes.commentSection}>
@@ -81,9 +92,9 @@ const CommentSection = ({ setIsShowingProduct, productId }) => {
                             <Typography className={classes.logout} onClick={handleLogout} variant="h6">Logout</Typography>
                         </form>
                         }
-        
+
                         {comments.map(({id, data: { name, message, photoUrl, timestamp }}) =>( 
-                            <Comment 
+                            <Comment  
                                 key={id} 
                                 name={name} 
                                 message={message} 
@@ -91,6 +102,8 @@ const CommentSection = ({ setIsShowingProduct, productId }) => {
                                 timestamp={timestamp}
                             />
                         ))}
+                        {/* End of comments */}
+                        <div ref={endOfCommentsRef} />
                     </div>
                 </>
             )}

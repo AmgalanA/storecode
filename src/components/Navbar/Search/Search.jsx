@@ -66,7 +66,9 @@ const Search = ({ onSetQuery, onSetIsShowingProduct, onHandleTyping, products, q
                                 <>
                                 {product ? 
                                 <Typography onClick={() => onSetProductId(product.id)} 
-                                className={classes.availableProductName} variant="body1">{product.name}</Typography>
+                                className={classes.availableProductName} variant="body1">
+                                    {console.log(product)}
+                                    {product.name}</Typography>
                                 : 'Nothing'}
                                 </>
                             )

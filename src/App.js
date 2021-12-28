@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { commerce } from './lib/commerce'
 import { Products, Navbar, Cart, Checkout, ShowProduct, Footer, Register, Quote } from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { onAuthStateChanged } from '@firebase/auth';
+import { onAuthStateChanged, getRedirectResult } from '@firebase/auth';
 import { auth } from './firebase';
 import { useDispatch } from 'react-redux';
 import { login, logout } from './features/userSlice';
@@ -117,6 +117,9 @@ const App = () => {
         fetchProducts();
         fetchCard();
         handleInitialAuthState();
+        getRedirectResult(auth)
+        .then(result => console.log(result.user))
+        .catch(error => console.log(error))
     }, []);
 {/*
 if(isShowingProduct) return (

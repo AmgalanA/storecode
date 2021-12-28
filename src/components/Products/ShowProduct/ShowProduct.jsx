@@ -34,7 +34,7 @@ const ShowProduct = ({ chosenProduct, setIsShowingProduct, onAddToCart }) => {
         <>
             {chosenProduct?.map((product) => (
                 <>
-                <Card className={classes.cardContainer}>
+                <Card key={product.id} className={classes.cardContainer}>
                 <Grid className={classes.gridContainer} spacing={4} container>
                     <Grid className={classes.firstColumnContainer} item xs={12} sm={6} md={6}>
                         <Card className={classes.imageContainer}>

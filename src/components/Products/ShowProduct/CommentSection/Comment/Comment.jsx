@@ -41,11 +41,11 @@ const Comment = ({ name, message, photoUrl, timestamp }) => {
 
     return (
         <>
-        {message && (
+        {message && name && (
             <Card className={classes.comment}>
                 <div className={classes.commentHeader}>
                     <Avatar src={photoUrl}>
-                        {name[0]}
+                        {name?.[0]}
                     </Avatar>
                     <Typography className={classes.commentName} variant="h6">{name}</Typography>
                 </div>
